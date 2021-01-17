@@ -6,9 +6,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const { config } = require('./config.js');
 var createError = require('http-errors');
+var passport = require('passport');
 
-
-// passport \\
 // hashing
 //sql
 // createError 
@@ -35,7 +34,13 @@ app.listen(port, ()=>{
 // app.use(function(req, res, next) {
 //     next(createError(404));
 //   });
+//passport config
+require('./auth/passport');
 
+app.use((req, res, next) => {
+    res.locals.logUser = req.user;  
+    next();
+  });
 // routes
 const indexRouter = require('./router/index');
 const usersRouter = require('./router/users');
