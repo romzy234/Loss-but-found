@@ -2,8 +2,8 @@
 
 module.exports = {
     mail: {
-        host: 'isaacgarrick.com',
-        user:'cyril@isaacgarrick.com',
-        pass: 'Cyril@1234'
+        host: 'isaacgarrick.com' ,// Remove
+        user:'cyril@isaacgarrick.com',// Remove
+        pass: 'Cyril@1234'// Remove
     }
 };
