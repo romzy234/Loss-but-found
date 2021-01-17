@@ -1,6 +1,6 @@
 const { json } = require('body-parser');
 const passport = require('passport');
-//const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const { users } = require("../config/nedb");
 users.loadDatabase();
 const validPassword = require('../utils/passwordutils').validPassword;
@@ -25,20 +25,20 @@ const verifyCallback = (username, password, done) => {
 
 }
 
-// const strategy  = new LocalStrategy(verifyCallback);
+const strategy  = new LocalStrategy(verifyCallback);
 
-// passport.use(strategy);
-// // console.log( verifyCallback + ' is True')
+passport.use(strategy);
+// console.log( verifyCallback + ' is True')
 
-// passport.serializeUser((user, done) => {
-//     done(null, user._id);
-//     //console.log( user)
-// });
+passport.serializeUser((user, done) => {
+    done(null, user._id);
+    //console.log( user)
+});
 
-// passport.deserializeUser((id, done) => {
-//     users.findOne({_id:id}, (err, user)=>{
-//         done(null, user);
-//     })
-// });
+passport.deserializeUser((id, done) => {
+    users.findOne({_id:id}, (err, user)=>{
+        done(null, user);
+    })
+});
 
 // Finished
