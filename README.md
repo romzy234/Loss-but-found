@@ -12,3 +12,7 @@
 
 #### FIX 
 * config file 
+
+
+### Note (Dev)
+* View Folder And Temp Are Included In the Git Igrone

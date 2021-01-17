@@ -40,6 +40,9 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+temp/
+# Remove this line later
+views/
 
 # TypeScript v1 declaration files
 typings/
