@@ -4,7 +4,7 @@ const nedb = require('nedb');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const bodyParser = require('body-parser');
-const { config } = require('./config.js');
+const { config } = require('./config.config');
 var createError = require('http-errors');
 var passport = require('passport');
 
@@ -50,3 +50,5 @@ app.use('/users', usersRouter);
 // app.get('/', (req, res)=>{
 //     res.sendFile(path.join(__dirname+'/test.html'));
 //   })
+
+console.log(config.port)
