@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const indexcontroller = require('../controller/index')
-
+const usercontroller = require('../controller/user')
 
 router.get('/',indexcontroller.getHome);
 router.post('/report',indexcontroller.postReport);

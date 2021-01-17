@@ -46,7 +46,7 @@ const indexRouter = require('./router/index');
 const usersRouter = require('./router/users');
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', usersRouter);
 // app.get('/', (req, res)=>{
 //     res.sendFile(path.join(__dirname+'/test.html'));
 //   })
