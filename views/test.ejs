@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <input type="button" id="btnGenerate" value="Populate DropDownList" onclick="PopulateDropDownList()" />
+    <input type="button" id="btnGenerate" value="Populate DropDownList2" onclick="PopulateDropDownList2()" />
+    <hr />
+    <select id="ddlCustomers">
+    </select>
+    <script type="text/javascript">
+        async function PopulateDropDownList() {
+           //Build an array containing Customer records.
+            let url = 'http://localhost:3000/api';
+            let response = await fetch(url);
+
+            let customers = await response.json(); // read response body and parse as JSON
+
+
+           console.log(customers)
+            var ddlCustomers = document.getElementById("ddlCustomers");
+           
+            //Add the Options to the DropDownList.
+            for (var i = 0; i < customers.length; i++) {
+                var option = document.createElement("OPTION");
+ 
+                //Set Customer Name in Text part.
+                option.innerHTML = customers[i].moro;
+ 
+                //Set CustomerId in Value part.
+                option.value = customers[i].moro;
+ 
+                //Add the Option element to DropDownList.
+                ddlCustomers.options.add(option);
+            }
+        }
+
+    </script>
+
+<script type="text/javascript">
+    async function PopulateDropDownList2() {
+       //Build an array containing Customer records.
+        let url = 'http://localhost:3000/api';
+        let response = await fetch(url);
+
+        let customers = await response.json(); // read response body and parse as JSON
+
+
+       console.log(customers)
+        var ddlCustomers = document.getElementById("ddlCustomers");
+       
+        //Add the Options to the DropDownList.
+        for (var i = 0; i < customers.length; i++) {
+            var option = document.createElement("OPTION");
+
+            //Set Customer Name in Text part.
+            option.innerHTML = customers[i].moro;
+
+            //Set CustomerId in Value part.
+            option.value = customers[i].moro;
+
+            //Add the Option element to DropDownList.
+            ddlCustomers.options.add(option);
+        }
+    }
+
+</script>
+</body>
+</html>
