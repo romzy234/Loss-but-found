@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const { config } = require('./config.config');
 var createError = require('http-errors');
 var passport = require('passport');
+const multer = require('multer');
 
 // hashing
 //sql
