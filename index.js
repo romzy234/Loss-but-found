@@ -9,7 +9,7 @@ var createError = require('http-errors');
 var passport = require('passport');
 const multer = require('multer');
 
-// hashing
+// hashing ---Note
 //sql
 // createError 
 // express Session
