@@ -10,9 +10,9 @@ var passport = require('passport');
 const multer = require('multer');
 
 // hashing ---Note
-//sql
+//sql -- later
 // createError 
-// express Session
+// express Session ---note
 
 
 // Express 
