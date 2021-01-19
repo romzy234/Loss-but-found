@@ -6,8 +6,10 @@ exports.getsignup = (req, res, next) =>{
 }
 
 exports.postsignup = (req, res, next) =>{
-    data = req.body
-    console.log(data)
+    data = req.body;
+    console.log(data);
+    users.insert(data);
+    res.redirect('/')
 }
 
 exports.getsignin = (req, res, next) =>{

@@ -34,6 +34,7 @@ app.listen(port, ()=>{
 // app.use(function(req, res, next) {
 //     next(createError(404));
 //   });
+
 //passport config
 require('./auth/passport');
 
