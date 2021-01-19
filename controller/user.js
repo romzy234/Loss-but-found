@@ -1,6 +1,7 @@
 const { users, test } = require("../config/nedb");
 var multer =require('multer');
 var helpers = require('../script/helper')
+const path = require('path');
 users.loadDatabase();
 test.loadDatabase();
 
@@ -29,7 +30,7 @@ exports.getTest = (req, res, next) =>{
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'public/uploads/');
+        cb(null, 'uploads/');
     },
 
     // By default, multer removes file extensions so let's add them back
