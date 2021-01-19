@@ -1,5 +1,6 @@
 const { users, test } = require("../config/nedb");
 var multer =require('multer');
+var helpers = require('../script/helper')
 users.loadDatabase();
 test.loadDatabase();
 
@@ -25,6 +26,18 @@ exports.postsignin = (req, res, next) =>{
 exports.getTest = (req, res, next) =>{
     res.render('imageTest');
 }
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'public/uploads/');
+    },
+
+    // By default, multer removes file extensions so let's add them back
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
 
 exports.postTest = (req, res) => {
     // 10 is the limit I've defined for number of uploaded files at once
