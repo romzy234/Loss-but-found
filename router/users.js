@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var usercontroller = require('../controller/user');
+const path = require('path');
+
+router.use(express.static(path.join(__dirname, 'public')));
 
 router.get('/signup',usercontroller.getsignup);
 router.post('/signup',usercontroller.postsignup);
