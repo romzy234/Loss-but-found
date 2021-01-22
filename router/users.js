@@ -3,7 +3,7 @@ var router = express.Router();
 var usercontroller = require('../controller/user');
 const path = require('path');
 
-router.use(express.static(path.join(__dirname, 'public')));
+router.use(express.static(path.join(__dirname, 'uploads')));
 
 router.get('/signup',usercontroller.getsignup);
 router.post('/signup',usercontroller.postsignup);
