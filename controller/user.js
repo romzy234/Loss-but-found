@@ -31,6 +31,7 @@ exports.getTest = (req, res, next) =>{
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'uploads/');
+      console.log('ran from cb')
     },
 
     // By default, multer removes file extensions so let's add them back
@@ -44,7 +45,7 @@ exports.postTest = (req, res) => {
     // 10 is the limit I've defined for number of uploaded files at once
     // 'multiple_images' is the name of our file input field
     let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).array('multiple_images', 10);
-
+    console.log('ran from cb 2')
     upload(req, res, function(err) {
         if (req.fileValidationError) {
             return res.send(req.fileValidationError);
