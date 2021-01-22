@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const port = process.env.PORT || '3000';
 app.listen(port, ()=>{
-    console.log(`running on port ${port} `)
+    console.log(`running on port ${port} or go to 'http://localhost:3000' `)
 });
 
 // catch 404 and forward to error handler
