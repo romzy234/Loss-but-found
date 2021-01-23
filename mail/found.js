@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const { config } = require('../config.config');
+const fs = require('fs');
 
 const customMail = async (email, subject,header,name,ms1,ms2,sendermail,perview,authkey) =>{
       let posterman = {
@@ -26,10 +27,20 @@ const customMail = async (email, subject,header,name,ms1,ms2,sendermail,perview,
           html: ` `
 };
 return transporter.sendMail(mailOptions, (error, data) => {
-  if (error) {
-      console.log(error + email + 'custom')
+  if(data){
+    fs.appendFile("./logs/sentMail.log", data.response + ',' + ' - ' + ',' + email + ' this was inital by the user' + ',' + '\n', (err) => { 
+        if (err) 
+          console.log(err);  
+      });
       return
-  }
+}
+if (error) {
+    fs.appendFile("./logs/failMail.log", error + ',' + ' - ' + ',' + email + ',' + '\n', (err) => { 
+        if (err) 
+          console.log(err);  
+      });
+    return
+}
 });
 };
     }
