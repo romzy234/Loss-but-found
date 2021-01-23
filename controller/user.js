@@ -5,16 +5,36 @@ const path = require('path');
 users.loadDatabase();
 test.loadDatabase();
 
+
+var genPassword = require('../utils/passwordutils').genPassword;
+var isValid = require('../utils/passwordutils').validPassword
+
 exports.getsignup = (req, res, next) =>{
     res.render('signup');
 }
 
-exports.postsignup = (req, res, next) =>{
-    data = req.body;
-    console.log(data);
-    users.insert(data);
-    res.redirect('/')
-}
+exports.postsignup = (req, res, next) => {
+    const saltHash = genPassword(req.body.password);
+    const salt = saltHash.salt;
+    const hash = saltHash.hash;
+
+    const newUser = {
+        username: req.body.username,
+        email: req.body.email,
+        hash: hash,
+        salt: salt,
+        status : true
+        // admin: true
+    };
+
+   // welcome.newAdmin(req.body.email, req.body.username, req.body.password);
+    users.insert(newUser, function (err, newDoc) { 
+        res.redirect('/');
+        if(err){
+            res.status(500)
+        }
+        });
+};
 
 exports.getsignin = (req, res, next) =>{
     res.render('signin');

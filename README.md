@@ -13,7 +13,15 @@
 #### FIX 
 * ~config file~
 * auth
+* auth - unqiue username
 * image transfer
+* mail - welcome
 
 ### Note (Dev)
 * View Folder And Temp Are Included In the Git Igrone
+
+
+#### 
+Config Setting 
+index.js
+/mail/founds
