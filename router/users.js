@@ -14,11 +14,11 @@ router.get('/signin',usercontroller.getsignin);
 router.get('/test2',check,usercontroller.getTest);
 router.post('/upload-multiple-images', usercontroller.postTest);
 
-router.post('/signin',passport.authenticate('local', { failureRedirect: '/', successRedirect: '/users/homepage' }));
+router.post('/signin',passport.authenticate('local', { failureRedirect: '/signin', successRedirect: '/' }));
 
 router.get('/logout', function(req, res, next) {
     req.logout();
-    res.redirect('/users');
+    res.redirect('/');
   });
 
 module.exports = router;

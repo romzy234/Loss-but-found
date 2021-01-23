@@ -4,7 +4,7 @@ module.exports = (req,res,next)=>{
         //console.log(req.logUser);
         next()
     }else{
-        res.redirect('/users');
+        res.redirect('/signin');
     }
 
 }
