@@ -13,6 +13,7 @@
 #### FIX 
 * ~config file~
 * auth
+* image transfer
 
 ### Note (Dev)
 * View Folder And Temp Are Included In the Git Igrone
