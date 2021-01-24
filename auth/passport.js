@@ -7,7 +7,7 @@ const validPassword = require('../utils/passwordutils').validPassword;
 
 
 const verifyCallback = (username, password, done) => {
-    console.log(username)
+    // console.log(username)
      users.findOne({ username: username },
         (err, user)=>{
             if (err) { return done(err); }
@@ -15,7 +15,7 @@ const verifyCallback = (username, password, done) => {
             if (!user) { return done(null, false); }
             
             const isValid = validPassword(password, user.hash, user.salt);
-            console.log( isValid)
+            // console.log( isValid)
             if (isValid) {
                 return done(null, user) ;
             } else {
@@ -32,7 +32,7 @@ passport.use(strategy);
 
 passport.serializeUser((user, done) => {
     done(null, user._id);
-    console.log( user)
+    // console.log( user)
 });
 
 passport.deserializeUser((id, done) => {
