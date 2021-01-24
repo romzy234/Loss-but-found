@@ -12,10 +12,13 @@
 
 #### FIX 
 * ~config file~
-* auth
+* ~auth~
 * auth - unqiue username
 * image transfer
 * mail - welcome
+* manifest 
+* service workers
+* application layout 
 
 ### Note (Dev)
 * View Folder And Temp Are Included In the Git Igrone
@@ -23,5 +26,5 @@
 
 #### 
 Config Setting 
-index.js
+index.js -port -session secret key - 
 /mail/founds
