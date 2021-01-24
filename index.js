@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: "ilovecoding",//process.env.SECRET,
+  secret: config.secret,
   resave: false,
   saveUninitialized: true,  
   cookie: {
@@ -45,9 +45,9 @@ app.use(passport.session());
 //passport config
 require('./auth/passport');
 
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || config.port;
 app.listen(port, ()=>{
-    console.log(`running on port ${port} or go to 'http://localhost:3000' `)
+    console.log(`running on port ${port} or go to 'http://localhost:${port}' `)
 });
 
 // catch 404 and forward to error handler
