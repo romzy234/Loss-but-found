@@ -10,5 +10,6 @@
  *  status 
  * admin && ( this dependes on the type of database  either sql or nosql) 
 *  id 
+* verified ?
 
 #### loss.db 
