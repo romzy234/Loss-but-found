@@ -5,6 +5,8 @@ const path = require('path');
 users.loadDatabase();
 test.loadDatabase();
 
+const {verified} = require('../mail/verify');
+
 
 var genPassword = require('../utils/passwordutils').genPassword;
 var isValid = require('../utils/passwordutils').validPassword
@@ -20,15 +22,18 @@ exports.postsignup = (req, res, next) => {
 
     const newUser = {
         username: req.body.username,
+        name : req.body.name,
         email: req.body.email,
         hash: hash,
         salt: salt,
-        status : true
+        status : true,
+        verified: false,
         // admin: true
     };
 
    // welcome.newAdmin(req.body.email, req.body.username, req.body.password);
     users.insert(newUser, function (err, newDoc) { 
+       // verified(newDoc.email,newDoc._id); // For Mail Verification
         res.redirect('/');
         if(err){
             res.status(500)

@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const { config } = require('../config.config');
 const fs = require('fs');
 
-const verify = async (email, keys) =>{
+exports.verified = async (email, keys) =>{
       let posterman = {
         user : config.mail.user,
         pass : config.mail.pass
@@ -43,6 +43,8 @@ if (error) {
 }
 });
 };
-    }
+
+// console.log(`test work ID = ${keys} and ${email}`);
+}
 
     // verify('cyrilogoh@gmail.com', 'iclcbjs7ujbs787sus8si');
