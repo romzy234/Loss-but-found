@@ -39,3 +39,4 @@ index.js -port -session secret key -
 * Forgotten Password Route 
 * Update Profile // Not deleting user 
 * logging user 
+* roles
