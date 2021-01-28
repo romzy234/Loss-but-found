@@ -28,14 +28,14 @@ const verify = async (email, keys) =>{
 };
 return transporter.sendMail(mailOptions, (error, data) => {
   if(data){
-    fs.appendFile("./logs/sentMail.log", data.response + ', -- HIGH --' + ' - ' + ',' + email + ' this was inital by the user To Verify His Mail' + ',' + '\n', (err) => { 
+    fs.appendFile("../logs/sentMail.log", data.response + ', -- HIGH --' + ' - ' + ',' + email + ' this was inital by the user To Verify His Mail' + ',' + '\n', (err) => { 
         if (err) 
           console.log(err);  
       });
       return
 }
 if (error) {
-    fs.appendFile("./logs/failMail.log", error + ',' + ' -- HIGH --' + ',' + email + ',' + '\n', (err) => { 
+    fs.appendFile("../logs/failMail.log", error + ',' + ' -- HIGH --' + ',' + email + ',' + '\n', (err) => { 
         if (err) 
           console.log(err);  
       });
@@ -44,3 +44,5 @@ if (error) {
 });
 };
     }
+
+    // verify('cyrilogoh@gmail.com', 'iclcbjs7ujbs787sus8si');
