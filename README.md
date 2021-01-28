@@ -19,6 +19,7 @@
 * manifest 
 * service workers
 * application layout 
+* signup -- push session instantly
 
 ### Note (Dev)
 * View Folder And Temp Are Included In the Git Igrone
@@ -31,9 +32,9 @@ index.js -port -session secret key -
 
 
 #### Authentication Build
-* User signUp
+* ~User signUp~
 * ~Mail Verification~
-* Verification Route
+* ~Verification Route~
 * Forgotten Password Mail
 * Forgotten Password Route 
 * Update Profile // Not deleting user 

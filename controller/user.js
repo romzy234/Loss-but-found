@@ -90,3 +90,10 @@ exports.postTest = (req, res) => {
     });
 };
 
+exports.verified = (req,res, next) => {
+    const id = req.params.id
+    // Set an existing field's value
+    users.update({ _id: id }, { $set: { verified: true } }, function (err, numReplaced) {
+        res.redirect('/');
+  });
+}

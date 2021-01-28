@@ -21,4 +21,5 @@ router.get('/logout', function(req, res, next) {
     res.redirect('/');
   });
 
+router.get('/verified/:id', usercontroller.verified); 
 module.exports = router;
