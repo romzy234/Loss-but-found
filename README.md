@@ -32,7 +32,9 @@ index.js -port -session secret key -
 
 #### Authentication Build
 * User signUp
-* Mail Verification
-* Forgotten Password 
+* ~Mail Verification~
+* Verification Route
+* Forgotten Password Mail
+* Forgotten Password Route 
 * Update Profile // Not deleting user 
 * logging user 

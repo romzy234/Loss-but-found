@@ -4,12 +4,13 @@
 
  #### Users.db or Users Database 
  *  username
+ *  name
  *  email
- *  hash
- *  salt
- *  status 
- * admin && ( this dependes on the type of database  either sql or nosql) 
-*  id 
-* verified ?
+ *  hash - gen
+ *  salt - gen
+ *  status -gen
+ * admin && ( this dependes on the type of database  either sql or nosql) - gen
+*  id -gen
+* verified ? -gen
 
 #### loss.db 
