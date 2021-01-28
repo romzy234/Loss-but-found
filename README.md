@@ -28,3 +28,11 @@
 Config Setting 
 index.js -port -session secret key - 
 /mail/founds
+
+
+#### Authentication Build
+* User signUp
+* Mail Verification
+* Forgotten Password 
+* Update Profile // Not deleting user 
+* logging user 
