@@ -25,7 +25,7 @@
 * View Folder And Temp Are Included In the Git Igrone
 
 
-#### 
+#### Config Setting File Location
 Config Setting 
 index.js -port -session secret key - 
 /mail/founds
@@ -33,8 +33,11 @@ index.js -port -session secret key -
 
 #### Authentication Build
 * ~User signUp~
+* ~User signUp Hashing~
 * ~Mail Verification~
 * ~Verification Route~
+* Forgotten Password HaShInG 
+* Forgotten Password middleware - Time Expiration
 * Forgotten Password Mail
 * Forgotten Password Route 
 * Update Profile // Not deleting user 
