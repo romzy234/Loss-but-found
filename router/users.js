@@ -4,6 +4,7 @@ var usercontroller = require('../controller/user');
 const path = require('path');
 const passport = require('passport');
 const check = require('../middlewares/checkstaus')
+const { time } = require('../middlewares/checkTime')
 
 router.use(express.static(path.join(__dirname, 'uploads')));
 
@@ -22,4 +23,5 @@ router.get('/logout', function(req, res, next) {
   });
 
 router.get('/verified/:id', usercontroller.verified); 
+router.get('/reset/:salt/:time/:hash', time, usercontroller.reset); 
 module.exports = router;

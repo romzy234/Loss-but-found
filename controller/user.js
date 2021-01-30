@@ -97,3 +97,18 @@ exports.verified = (req,res, next) => {
         res.redirect('/');
   });
 }
+
+exports.reset= (req,res, next) => {
+    const salt = req.params.salt;
+    const hash = req.params.hash;
+    // Set an existing field's value
+    // users.findOne({ salt : salt}, (err, data) =>{
+    //     const isValid = validPassword(password, user.hash, user.salt);
+    //     // console.log( isValid)
+    //     if (isValid) {
+    //         return done(null, user) ;
+    //     } else {
+    //         return done(null, false);
+    //     }
+    // })
+}
