@@ -1,11 +1,12 @@
 exports.time = (req, res, next) => {
     const time = req.params.time;
      const now = Date.now();
- 
      if (now - time < 300000){
          next();
+         console.log(now - time + ' Not expired')
      }else{
-         return res.status(500)
+        console.log(now - time + ' expired')
+         return res.send('Expired link')
          // write condition
      }
  }

@@ -6,6 +6,7 @@ users.loadDatabase();
 test.loadDatabase();
 
 const {verified} = require('../mail/verify');
+const {validHash} = require('../script/resetHash');
 
 
 var genPassword = require('../utils/passwordutils').genPassword;
@@ -101,14 +102,36 @@ exports.verified = (req,res, next) => {
 exports.reset= (req,res, next) => {
     const salt = req.params.salt;
     const hash = req.params.hash;
+    const id = req.params.id;
     // Set an existing field's value
-    // users.findOne({ salt : salt}, (err, data) =>{
-    //     const isValid = validPassword(password, user.hash, user.salt);
-    //     // console.log( isValid)
-    //     if (isValid) {
-    //         return done(null, user) ;
-    //     } else {
-    //         return done(null, false);
-    //     }
-    // })
+    console.log('ranss')
+    users.findOne({ _id : id}, (err, data) =>{
+        
+        if(err){
+            res.status(500)
+        }else{
+            const isValid = validHash(data.password, hash, salt);
+            // console.log( isValid)
+            if (isValid) {
+                res.send('you are in');
+            } else {
+                res.send('you are very not in');
+            }
+        }
+    })
 }
+
+/**So for the reset function
+ * we use the salt to find the user 
+ * then run the  valid hash function 
+ * if true we rediret the user to a page which would update the password
+ * else send a bad request and flagg the user ;-)
+ * 
+ * then the post genratation we pass a mail function with the following params 
+ * (email, salt, time, hash) 
+ * this would sent the mail 
+ * the post route would use email 
+ *  a middleware to find the user 
+ * if not exist would sent a bad request in the html 
+ * not redirect to another user
+ */
