@@ -107,9 +107,10 @@ exports.reset= (req,res, next) => {
     console.log('ranss')
     users.findOne({ _id : id}, (err, data) =>{
         
-        if(err){
-            res.status(500)
-        }else{
+        if (err) { return res.send('you are very not in'); }
+
+        if (!data) { return res.send('you are very not in'); }
+        
             const isValid = validHash(data.password, hash, salt);
             // console.log( isValid)
             if (isValid) {
@@ -117,7 +118,6 @@ exports.reset= (req,res, next) => {
             } else {
                 res.send('you are very not in');
             }
-        }
     })
 }
 
