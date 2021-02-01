@@ -23,5 +23,6 @@ router.get('/logout', function(req, res, next) {
   });
 
 router.get('/verified/:id', usercontroller.verified); 
-router.get('/reset/:id/:salt/:time/:hash', time, usercontroller.reset); 
+router.get('/reset/:id/:salt/:time/:hash', time, usercontroller.getReset);
+router.post('/reset', usercontroller.postReset); 
 module.exports = router;

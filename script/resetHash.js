@@ -1,6 +1,6 @@
 var crypto = require('crypto');
 
-function genPassword(password) {
+function genHash(password) {
     var salt = crypto.randomBytes(32).toString('hex');
     var genHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
     console.log(salt + " ," + genHash +  " ," + Date.now());
@@ -17,7 +17,7 @@ function validHash(password, hash, salt) {
 }
 
 module.exports.validHash = validHash;
-module.exports.genPassword = genPassword;
+module.exports.genHash = genHash;
 
 
 // genPassword('cyril is A GOOD');

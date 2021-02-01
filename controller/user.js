@@ -6,7 +6,7 @@ users.loadDatabase();
 test.loadDatabase();
 
 const {verified} = require('../mail/verify');
-const {validHash} = require('../script/resetHash');
+const {validHash, genHash} = require('../script/resetHash');
 
 
 var genPassword = require('../utils/passwordutils').genPassword;
@@ -99,7 +99,7 @@ exports.verified = (req,res, next) => {
   });
 }
 
-exports.reset= (req,res, next) => {
+exports.getReset= (req,res, next) => {
     const salt = req.params.salt;
     const hash = req.params.hash;
     const id = req.params.id;
@@ -121,6 +121,22 @@ exports.reset= (req,res, next) => {
     })
 }
 
+exports.postReset = (req,res, next) => {
+    const emailP = req.body.email;
+    const email = emailP
+    const time = Date.now();
+
+    users.findOne({email : email}, (err, data)=>{
+        if(err){ return res.status(500)};
+        if(!data){ return res.send('NO USER FOund')};
+        const password = data.password;
+        console.log(typeof password);
+        // const hash = genHash(data.password)
+        res.send(`http://localhost:3000/reset/${data._id}/${data.salt}/${time}/${data.hash}`)
+    })
+}
+
+
 /**So for the reset function
  * we use the salt to find the user 
  * then run the  valid hash function 
@@ -134,4 +150,7 @@ exports.reset= (req,res, next) => {
  *  a middleware to find the user 
  * if not exist would sent a bad request in the html 
  * not redirect to another user
+ * 
+ * Generate a common password for all user to user 
+ * most likely a config seeting or somewhat 
  */
