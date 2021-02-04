@@ -9,6 +9,7 @@
 * Wifi list Logging 
 * Watching Of A good losses
 * Set general reset password for the user hashing 
+* Update password with random generation 
 
 
 #### FIX 

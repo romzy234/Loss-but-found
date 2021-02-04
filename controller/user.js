@@ -110,8 +110,8 @@ exports.getReset= (req,res, next) => {
         if (err) { return res.send('you are very not in'); }
 
         if (!data) { return res.send('you are very not in'); }
-        
-            const isValid = validHash(data.password, hash, salt);
+       const password = 'today'
+            const isValid = validHash(password, hash, salt);
             // console.log( isValid)
             if (isValid) {
                 res.send('you are in');
@@ -129,10 +129,11 @@ exports.postReset = (req,res, next) => {
     users.findOne({email : email}, (err, data)=>{
         if(err){ return res.status(500)};
         if(!data){ return res.send('NO USER FOund')};
-        const password = data.password;
+        // const password = data.password;
+        const password = 'today'
         console.log(typeof password);
-        // const hash = genHash(data.password)
-        res.send(`http://localhost:3000/reset/${data._id}/${data.salt}/${time}/${data.hash}`)
+        const hash = genHash(password);
+        res.send(`http://localhost:3000/reset/${data._id}/${hash.salt}/${time}/${hash.hash}`)
     })
 }
 
