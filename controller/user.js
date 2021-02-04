@@ -6,6 +6,7 @@ users.loadDatabase();
 test.loadDatabase();
 
 const {verified} = require('../mail/verify');
+const {resetP} = require('../mail/reset');
 const {validHash, genHash} = require('../script/resetHash');
 
 
@@ -123,7 +124,7 @@ exports.getReset= (req,res, next) => {
 
 exports.postReset = (req,res, next) => {
     const emailP = req.body.email;
-    const email = emailP
+    const email = emailP // covert this to lowercase
     const time = Date.now();
 
     users.findOne({email : email}, (err, data)=>{
@@ -133,7 +134,9 @@ exports.postReset = (req,res, next) => {
         const password = 'today'
         console.log(typeof password);
         const hash = genHash(password);
-        res.send(`http://localhost:3000/reset/${data._id}/${hash.salt}/${time}/${hash.hash}`)
+        resetP(email, data._id, hash.salt, time, hash.hash);
+        res.end();
+        // res.send(`http://localhost:3000/reset/${data._id}/${hash.salt}/${time}/${hash.hash}`)
     })
 }
 

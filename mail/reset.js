@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const { config } = require('../config.config');
 const fs = require('fs');
 
-exports.resetP = async (email, keys) =>{
+exports.resetP = async (email, id, salt, time, hash) =>{
       let posterman = {
         user : config.mail.user,
         pass : config.mail.pass
@@ -24,7 +24,7 @@ exports.resetP = async (email, keys) =>{
           from:`Cyril` + posterman.user,
           to:  email,
           subject: 'Reset Password ',
-          html: ` <p>Please Follow this URl 'https://loaclhost:3000/reset/password/${keys}/' to reset your password </p>`
+          html: ` <p>Please Follow this URl 'https://${siteName}/reset/${data._id}/${hash.salt}/${time}/${hash.hash}' to reset your password </p>`
 };
 return transporter.sendMail(mailOptions, (error, data) => {
   if(data){

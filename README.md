@@ -31,6 +31,7 @@
 Config Setting 
 index.js -port -session secret key - 
 /mail/founds
+/mail/reset
 
 
 #### Authentication Build
