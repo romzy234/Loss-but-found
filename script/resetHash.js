@@ -3,7 +3,7 @@ var crypto = require('crypto');
 function genHash(password) {
     var salt = crypto.randomBytes(32).toString('hex');
     var genHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-    console.log(salt + " ," + genHash +  " ," + Date.now());
+   // console.log(salt + " ," + genHash +  " ," + Date.now());
     return {
       salt: salt,
       hash: genHash
@@ -12,7 +12,7 @@ function genHash(password) {
 
 function validHash(password, hash, salt) {
     var hashVerify = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-    console.log(hash === hashVerify);
+   // console.log(hash === hashVerify);
     return hash === hashVerify;
 }
 
