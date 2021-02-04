@@ -37,10 +37,11 @@ index.js -port -session secret key -
 * ~User signUp Hashing~
 * ~Mail Verification~
 * ~Verification Route~
-* Forgotten Password HaShInG 
-* Forgotten Password middleware - Time Expiration
-* Forgotten Password Mail
-* Forgotten Password Route 
+* ~Forgotten Password HaShInG~ 
+* ~Forgotten Password middleware - Time Expiration~
+* ~Forgotten Password Mail~
+* ~Forgotten Password Route~ 
+* Updating the password
 * Update Profile // Not deleting user 
 * logging user 
 * roles
