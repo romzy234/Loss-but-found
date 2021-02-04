@@ -19,23 +19,22 @@ exports.resetP = async (email, id, salt, time, hash) =>{
   });
 
   { 
-      console.log('from nodemailer');
       const mailOptions = {
           from:`Cyril` + posterman.user,
           to:  email,
           subject: 'Reset Password ',
-          html: ` <p>Please Follow this URl 'https://${siteName}/reset/${data._id}/${hash.salt}/${time}/${hash.hash}' to reset your password </p>`
+          html: ` <p>Please Follow this URl 'https://${config.siteName}/reset/${id}/${salt}/${time}/${hash}' to reset your password </p>`
 };
 return transporter.sendMail(mailOptions, (error, data) => {
   if(data){
-    fs.appendFile("../logs/sentMail.log", data.response + ', -- HIGH --' + ' - ' + ',' + email + ' this was inital by the user To Verify His Mail' + ',' + '\n', (err) => { 
+    fs.appendFile("./logs/sentMail.log", data.response + ', -- HIGH --' + ' - ' + ',' + email + ' this was inital by the user To Reset His Mail' + ',' + '\n', (err) => { 
         if (err) 
           console.log(err);  
       });
       return
 }
 if (error) {
-    fs.appendFile("../logs/failMail.log", error + ',' + ' -- HIGH --' + ',' + email + ',' + '\n', (err) => { 
+    fs.appendFile("./logs/failMail.log", error + ',' + ' -- HIGH --' + ',' + email + ',' + '\n', (err) => { 
         if (err) 
           console.log(err);  
       });

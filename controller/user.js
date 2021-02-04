@@ -132,7 +132,7 @@ exports.postReset = (req,res, next) => {
         if(!data){ return res.send('NO USER FOund')};
         // const password = data.password;
         const password = 'today'
-        console.log(typeof password);
+        // console.log(typeof password); // make this auto generated
         const hash = genHash(password);
         resetP(email, data._id, hash.salt, time, hash.hash);
         res.end();
