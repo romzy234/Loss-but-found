@@ -16,6 +16,7 @@
 * ~config file~
 * ~auth~
 * auth - unqiue username
+* auth - unqiue Email 
 * image transfer
 * mail - welcome
 * manifest 
