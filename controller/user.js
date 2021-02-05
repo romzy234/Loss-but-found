@@ -11,7 +11,8 @@ const {validHash, genHash} = require('../script/resetHash');
 
 
 var genPassword = require('../utils/passwordutils').genPassword;
-var isValid = require('../utils/passwordutils').validPassword
+var isValid = require('../utils/passwordutils').validPassword;
+const { Welcome } = require("../mail/welcome");
 
 exports.getsignup = (req, res, next) =>{
     res.render('signup');
@@ -35,7 +36,8 @@ exports.postsignup = (req, res, next) => {
 
    // welcome.newAdmin(req.body.email, req.body.username, req.body.password);
     users.insert(newUser, function (err, newDoc) { 
-       // verified(newDoc.email,newDoc._id); // For Mail Verification
+       Welcome(newDoc.email);
+       verified(newDoc.email,newDoc._id); // For Mail Verification
         res.redirect('/');
         if(err){
             res.status(500)
